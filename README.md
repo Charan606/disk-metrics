@@ -1,4 +1,4 @@
-# VolumeGuard
+# Disk Metrics
 
 A native macOS menu-bar storage monitor for the TTU HackWesTex 2026 challenge.
 MIT licensed. Requires macOS 13+ and Swift 5.9+ (Xcode 15+ toolchain).
