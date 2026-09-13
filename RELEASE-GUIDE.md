@@ -1,14 +1,14 @@
-# Publish VolumeGuard so people can download it
+# Publish Disk Metrics so people can download it
 
 ## Current state
 
-The code exists locally. No GitHub remote is configured here. No public release has been uploaded. The assistant has not committed or pushed any changes. You and your teammate own the commits and publication steps.
+Source has been uploaded to https://github.com/Charan606/disk-metrics . The latest local correction normalizes the project layout and name. The assistant has not committed or pushed corrections. You and your teammate own review and publication; a downloadable app release is still needed.
 
-## 1. Create the public repository
+## 1. Update the existing public repository
 
-Sign in to GitHub. Use the + menu to create a new repository named `VolumeGuard`. Choose **Public**. For importing this existing project, leave automatic README/license/gitignore initialization off. Create the repository and copy its URL.
+Your repository is https://github.com/Charan606/disk-metrics . Keep its existing Git history. The reviewed upload put sources inside TCL/ while the root Makefile expected them at the root. The corrected TCL Challenge source archive has Package.swift, Makefile, Sources, Tests, scripts and documentation together at its root. Include the hidden .github and .gitignore files.
 
-Use GitHub Desktop to avoid complicated Git commands. Choose **File → Clone repository → URL**, paste the URL of the empty repository you just created, and clone it into a new folder. Copy the contents of the extracted final TCL folder into that clone (do not copy or replace a `.git` folder). In GitHub Desktop, review the changed files, enter a meaningful commit message, choose **Commit to main**, then **Push origin**. These are actions for YOU to perform; the assistant has not done them. Do not upload `.build`, installed apps, temporary probe files or personal diagnostic exports as source. `.gitignore` excludes build outputs and delivery archives.
+For an existing clone, apply the supplied Disk-Metrics-fix.patch after checking it with git apply --check. Review changes in GitHub Desktop, test on the Mac, and commit and push yourselves. Do not replace the clone's .git folder. The assistant has not committed or pushed these corrections.
 
 ## 2. Make real contributions under both accounts
 
@@ -25,13 +25,13 @@ make test
 make package
 ```
 
-Find `dist/VolumeGuard-macOS.zip` in Finder. This is the **app download**. It contains the compiled VolumeGuard.app. The `final TCL.zip` supplied during development contains source code instead; it is not the end-user app download.
+Find `dist/Disk-Metrics-macOS.zip` in Finder. This is the **app download**. It contains the compiled Disk Metrics.app. The `TCL Challenge.zip` supplied during development contains source code instead; it is not the end-user app download.
 
 If building while running a copy from `dist`, quit that copy first. The normal `make update` workflow installs a separate copy under your personal Applications folder.
 
 ## 4. Create a GitHub Release
 
-On the repository page, open **Releases**, choose **Draft a new release**, create a version tag such as `v0.1.0`, and give it a clear title such as `VolumeGuard 0.1 — HackWesTex preview`. Copy the release description from RELEASE-NOTES.md and adjust tested details. Attach `dist/VolumeGuard-macOS.zip` in the release's asset area. Publish the release only after verifying the asset.
+On the repository page, open **Releases**, choose **Draft a new release**, create a version tag such as `v0.1.0`, and give it a clear title such as `Disk Metrics 0.1 — HackWesTex preview`. Copy the release description from RELEASE-NOTES.md and adjust tested details. Attach `dist/Disk-Metrics-macOS.zip` in the release's asset area. Publish the release only after verifying the asset.
 
 GitHub documents attaching compiled programs to releases here: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
 
@@ -39,7 +39,7 @@ Now share your repository's Releases page. A separate website or App Store listi
 
 ## 5. What users do
 
-Users download **VolumeGuard-macOS.zip** from the release, extract it, move **VolumeGuard.app** into Applications, and open it. They click its menu-bar icon and **Open dashboard**. They do not run `make` or install Swift to use the binary.
+Users download **Disk-Metrics-macOS.zip** from the release, extract it, move **Disk Metrics.app** into Applications, and open it. They click its menu-bar icon and **Open dashboard**. They do not run `make` or install Swift to use the binary.
 
 The current release is an Apple Silicon build when built on your Apple Silicon Mac. It targets macOS 13+; verify on the macOS versions you intend to claim. Do not claim Intel support for an arm64-only archive.
 

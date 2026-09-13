@@ -4,7 +4,7 @@ import Security
 enum FilesystemProbe {
     // A small, opt-in application-level probe, not a sustained disk benchmark.
     static func measure(folder: URL) -> String {
-        let file = folder.appendingPathComponent(".volumeguard-probe-\(UUID().uuidString)")
+        let file = folder.appendingPathComponent(".diskmetrics-probe-\(UUID().uuidString)")
         let manager = FileManager.default
         let blockSize = 1_048_576
         let blocks = 64
@@ -32,7 +32,7 @@ enum FilesystemProbe {
                 try reader.close()
             } catch { try? reader.close(); throw error }
             let readSeconds = ProcessInfo.processInfo.systemUptime - readStart
-            guard readBytes == blockSize * blocks else { throw NSError(domain: "VolumeGuard", code: 1, userInfo: [NSLocalizedDescriptionKey: "Probe read size did not match written size."]) }
+            guard readBytes == blockSize * blocks else { throw NSError(domain: "DiskMetrics", code: 1, userInfo: [NSLocalizedDescriptionKey: "Probe read size did not match written size."]) }
             let size = Double(readBytes)
             result = String(format: "Folder: %@\n64 MiB application I/O probe\nWrite + synchronize: %.3f GB/s (%.3f seconds)\nRead immediately afterward: %.3f GB/s (%.3f seconds)\nRead may be served from cache. Synchronize does not prove durable storage across every network server or device. These are application-observed rates for this folder, not live per-volume counters or maximum disk speed.", folder.path, size / max(writeSeconds, 0.000001) / 1e9, writeSeconds, size / max(readSeconds, 0.000001) / 1e9, readSeconds)
         } catch { result = "Probe failed: \(error.localizedDescription)" }

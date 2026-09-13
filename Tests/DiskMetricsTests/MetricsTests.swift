@@ -1,5 +1,5 @@
 import XCTest
-@testable import VolumeGuard
+@testable import DiskMetrics
 
 final class MetricsTests: XCTestCase {
     func testForecastUsesCapacityGrowth() {

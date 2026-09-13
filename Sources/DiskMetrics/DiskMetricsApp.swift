@@ -2,7 +2,7 @@ import SwiftUI
 import Charts
 
 @main
-struct VolumeGuardApp: App {
+struct DiskMetricsApp: App {
     @StateObject private var monitor = Monitor()
     var body: some Scene {
         MenuBarExtra {
@@ -10,7 +10,7 @@ struct VolumeGuardApp: App {
         } label: {
             Image(systemName: monitor.warning ? "externaldrive.badge.exclamationmark" : "externaldrive.fill")
         }.menuBarExtraStyle(.window)
-        Window("VolumeGuard", id: "dashboard") {
+        Window("Disk Metrics", id: "dashboard") {
             Dashboard(monitor: monitor).frame(minWidth: 780, minHeight: 620)
         }.defaultSize(width: 1000, height: 800)
     }
@@ -28,7 +28,7 @@ struct QuickPanel: View {
     @Environment(\.openWindow) private var openWindow
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("VolumeGuard").font(.title2.bold())
+            Text("Disk Metrics").font(.title2.bold())
             TimelineView(.periodic(from: .now, by: 1)) { context in
                 Text(monitor.healthSummary(at: context.date)).font(.callout)
             }
@@ -72,7 +72,7 @@ struct Dashboard: View {
         HStack {
             Image(systemName: "externaldrive.fill").font(.largeTitle).foregroundStyle(.teal)
             VStack(alignment: .leading) {
-                Text("VolumeGuard").font(.largeTitle.bold())
+                Text("Disk Metrics").font(.largeTitle.bold())
                 Text(monitor.demo ? "SIMULATED DEMO — not your Mac's measurements" : "Your Mac's storage, at a glance")
                     .foregroundStyle(monitor.demo ? Color.orange : Color.secondary)
             }

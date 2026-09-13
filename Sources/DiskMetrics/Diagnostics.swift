@@ -17,10 +17,10 @@ enum SystemCommand {
     // No shell interpolation, passwords, or automatic privilege escalation.
     // File-backed output avoids pipe deadlocks; each child has a deadline.
     static func run(_ executable: String, _ arguments: [String], timeout: TimeInterval = 8) throws -> CommandOutput {
-        let url = FileManager.default.temporaryDirectory.appendingPathComponent("volumeguard-\(UUID().uuidString)")
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("diskmetrics-\(UUID().uuidString)")
         guard FileManager.default.createFile(atPath: url.path, contents: nil,
                                             attributes: [.posixPermissions: 0o600]) else {
-            throw NSError(domain: "VolumeGuard", code: 1, userInfo: [NSLocalizedDescriptionKey: "Cannot create command output file"])
+            throw NSError(domain: "DiskMetrics", code: 1, userInfo: [NSLocalizedDescriptionKey: "Cannot create command output file"])
         }
         defer { try? FileManager.default.removeItem(at: url) }
         let handle = try FileHandle(forWritingTo: url)
@@ -176,7 +176,7 @@ enum Diagnostics {
                             health: DiskHealth(device: device, name: device, smartStatus: "Unavailable")))
                     }
                 }
-                if devices.count > 12 { sections.append(DiagnosticSection(title: "Device scan limit", source: "VolumeGuard", text: "Only the first 12 physical devices were queried in this scan.")) }
+                if devices.count > 12 { sections.append(DiagnosticSection(title: "Device scan limit", source: "DiskMetrics", text: "Only the first 12 physical devices were queried in this scan.")) }
             } else { sections.append(DiagnosticSection(title: "Hardware health", source: "diskutil list -plist physical", text: listing.report)) }
         } catch { sections.append(DiagnosticSection(title: "Hardware health", source: "diskutil", text: error.localizedDescription)) }
 
@@ -216,7 +216,7 @@ enum Diagnostics {
         let validUser = !user.isEmpty && !user.hasPrefix("-") && user.utf8.count <= 256 && !user.contains(where: { $0.isWhitespace || $0.isNewline })
         if validUser {
             sections.append(commandSection("User quota: \(user)", "/usr/bin/quota", ["-v", "-u", user],
-                explanation: "Native quota report for the named user. Limits, usage, and grace periods are shown when the filesystem/server provides them. Other users may require privileges. No output does not establish that quotas are supported; VolumeGuard does not enforce quotas."))
+                explanation: "Native quota report for the named user. Limits, usage, and grace periods are shown when the filesystem/server provides them. Other users may require privileges. No output does not establish that quotas are supported; DiskMetrics does not enforce quotas."))
         } else { sections.append(DiagnosticSection(title: "User quota", source: "quota", text: "Enter a valid short account name, such as the name shown by whoami.")) }
         sections.append(commandSection("NFS mounts and negotiated options", "/usr/sbin/nfsstat", ["-m"],
             explanation: "Shared-storage mount details reported by macOS. No pNFS capability is inferred from an NFS mount or protocol version."))

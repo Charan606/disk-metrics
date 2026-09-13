@@ -1,0 +1,10 @@
+name: macOS build and tests
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - run: make test
+      - run: make xcode-test
+      - run: make app

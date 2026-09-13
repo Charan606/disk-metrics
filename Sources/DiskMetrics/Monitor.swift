@@ -44,6 +44,10 @@ final class Monitor: ObservableObject {
 
     init() {
         demo = ProcessInfo.processInfo.arguments.contains("--demo")
+        if !demo {
+            do { try LegacyMigration.restoreAlertsIfNeeded() }
+            catch { exportStatus = "Previous alert history could not be copied: \(error.localizedDescription)" }
+        }
         if !demo, let data = try? Data(contentsOf: Self.alertURL),
            let saved = try? JSONDecoder().decode([Incident].self, from: data) { incidents = Array(saved.prefix(200)) }
         worker = Task { [weak self] in
@@ -62,7 +66,7 @@ final class Monitor: ObservableObject {
 
     private static var alertURL: URL {
         FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent("VolumeGuard/alerts.json")
+            .appendingPathComponent("DiskMetrics/alerts.json")
     }
 
     var visibleVolumes: [Volume] {
@@ -247,7 +251,7 @@ final class Monitor: ObservableObject {
         }
         if notificationsEnabled {
             let content = UNMutableNotificationContent()
-            content.title = demo ? "VolumeGuard DEMO alert" : "VolumeGuard alert"
+            content.title = demo ? "Disk Metrics DEMO alert" : "Disk Metrics alert"
             content.body = volume + ": " + message
             content.sound = .default
             UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil), withCompletionHandler: nil)
@@ -256,7 +260,7 @@ final class Monitor: ObservableObject {
 
     func export() {
         let panel = NSSavePanel()
-        panel.nameFieldStringValue = "volumeguard-report.json"
+        panel.nameFieldStringValue = "disk-metrics-report.json"
         guard panel.runModal() == .OK, let url = panel.url else { return }
         do {
             var report: [String: Any] = [

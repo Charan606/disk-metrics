@@ -1,5 +1,7 @@
 # Disk Metrics
 
+Public repository: https://github.com/Charan606/disk-metrics . This source update corrects the uploaded layout and completes the Disk Metrics rename; it is not committed or pushed by the assistant.
+
 A native macOS menu-bar storage monitor for the TTU HackWesTex 2026 challenge.
 MIT licensed. Requires macOS 13+ and Swift 5.9+ (Xcode 15+ toolchain).
 
@@ -21,10 +23,10 @@ Finish the installation dialog if command-line tools are missing. Then:
 swift --version
 make test
 make app
-open dist/DiskMetrics.app
+open "dist/Disk Metrics.app"
 ```
 
-Look for **DiskMetrics** in the menu bar. The app does not need a Dock icon.
+Look for **Disk Metrics** in the menu bar. The app does not need a Dock icon.
 For development, `make run` runs the executable directly. Quit the existing instance first.
 `make test` runs standalone calculation/parser checks using the command-line tools, without XCTest. `make xcode-test` runs the additional XCTest suite when a full Xcode testing environment is available.
 If your command-line tools provide Swift older than 5.9, update the tools or use Xcode 15+.
@@ -59,7 +61,7 @@ Quit the old running app. Copy the entire updated source folder to the Mac, incl
 ```sh
 make test
 make app
-open dist/VolumeGuard.app
+open "dist/Disk Metrics.app"
 ```
 
 The command-line check suite now expects **27/27 checks passed**. The simplified-dashboard/update-workflow version still requires macOS compilation and testing.
@@ -73,7 +75,7 @@ On a Mac with Homebrew installed, run:
 brew install smartmontools
 ```
 
-Then click **Refresh details**. VolumeGuard checks the standard Homebrew smartctl locations and runs a read-only JSON health query. Supported devices can report temperature, estimated endurance consumed, available spare/threshold, media errors, critical-warning bits, power-on hours, unsafe shutdowns, and cumulative reads/writes. Missing fields stay unknown. Device permissions and USB bridges can prevent access. The app does not automatically run sudo or install privileged helpers.
+Then click **Refresh details**. Disk Metrics checks the standard Homebrew smartctl locations and runs a read-only JSON health query. Supported devices can report temperature, estimated endurance consumed, available spare/threshold, media errors, critical-warning bits, power-on hours, unsafe shutdowns, and cumulative reads/writes. Missing fields stay unknown. Device permissions and USB bridges can prevent access. The app does not automatically run sudo or install privileged helpers.
 
 The smartmontools tool is an optional separate dependency, not bundled in the MIT source archive. Installation reference: [Homebrew smartmontools](https://formulae.brew.sh/formula/smartmontools). NVMe fields follow [smartmontools health-log output](https://www.smartmontools.org/static/doxygen/nvmeprint_8cpp_source.html).
 
@@ -90,13 +92,13 @@ To produce a downloadable archive on the Mac:
 make package
 ```
 
-This creates `dist/VolumeGuard-macOS.zip`. The binary matches the build Mac's architecture (Apple Silicon when built on this team's Mac). It is locally ad-hoc signed, not notarized; smooth public distribution still needs Developer ID signing/notarization. Source remains buildable without a paid account.
+This creates `dist/Disk-Metrics-macOS.zip`. The binary matches the build Mac's architecture (Apple Silicon when built on this team's Mac). It is locally ad-hoc signed, not notarized; smooth public distribution still needs Developer ID signing/notarization. Source remains buildable without a paid account.
 
 ## Three-minute demo
 
 1. Start in live mode. Show real APFS capacity and filesystem labels.
 2. If available, mount your team's NFS share using the Mac's existing mount workflow; show its capacity. NFS throughput is not measured by the device chart.
-3. Quit the live app and launch the installed app with `open "$HOME/Applications/VolumeGuard.app" --args --demo`. State clearly that the next scenario is simulated. Normal launches always use real collectors.
+3. Quit the live app and launch the installed app with `open "$HOME/Applications/Disk Metrics.app" --args --demo`. State clearly that the next scenario is simulated. Normal launches always use real collectors.
 4. Watch dataset consumption grow. At the default 85% threshold an alert appears after roughly 30 seconds. After at least 20 seconds the growth forecast becomes available.
 5. Export a report and show its `simulated` flag, volume fields, and alerts.
 6. Quit and reopen without `--demo` to return to real data. Live saved alerts remain separate from the simulated session.
@@ -139,7 +141,7 @@ The team reports the preceding expanded version works on its Mac. The latest das
 - User quotas are queried using the native quota command; APFS volume limits are separate. The app cannot add missing per-user quota support or query another user's limits without OS/server permission. Native reports retain their source headers/units and are not normalized into a quota chart.
 - NFS client diagnostics are cumulative operation/RPC counters, not per-share GB/s. Local NFS server user records do not expose remote server users. pNFS is **not implemented or validated**; it needs a supported client/server test environment. No NFS mount is presented as proof of pNFS support.
 - Activity alerts identify heavy observed writes, not malicious intent. Inaccessible, short-lived, and scan-limit-excluded processes are not fully observed. No process is killed and no user is blocked.
-- Live alerts persist under `~/Library/Application Support/VolumeGuard/alerts.json` (latest 200). Demo alerts are isolated and never written to live history. Notifications require an explicit user opt-in and macOS permission.
+- Live alerts persist under `~/Library/Application Support/DiskMetrics/alerts.json` (latest 200). Demo alerts are isolated and never written to live history. Notifications require an explicit user opt-in and macOS permission.
 - Internal `/System/Volumes/` service volumes are omitted from capacity alerts; the main user-facing startup volume is monitored.
 - No file content is scanned. Exported reports can contain volume paths, process names, account IDs, and NFS server addresses; review before sharing.
 
