@@ -21,10 +21,10 @@ Finish the installation dialog if command-line tools are missing. Then:
 swift --version
 make test
 make app
-open dist/VolumeGuard.app
+open dist/DiskMetrics.app
 ```
 
-Look for **VolumeGuard** in the menu bar. The app does not need a Dock icon.
+Look for **DiskMetrics** in the menu bar. The app does not need a Dock icon.
 For development, `make run` runs the executable directly. Quit the existing instance first.
 `make test` runs standalone calculation/parser checks using the command-line tools, without XCTest. `make xcode-test` runs the additional XCTest suite when a full Xcode testing environment is available.
 If your command-line tools provide Swift older than 5.9, update the tools or use Xcode 15+.
@@ -54,7 +54,7 @@ The app target uses local ad-hoc signing; it is not notarized for public binary 
 
 ## Install this update
 
-Quit the old running app. Copy the entire updated source folder to the Mac, including Sources/StorageProbe and Sources/VolumeGuard. Open Terminal in that folder and run:
+Quit the old running app. Copy the entire updated source folder to the Mac, including Sources/StorageProbe and Sources/DiskMetrics. Open Terminal in that folder and run:
 
 ```sh
 make test
