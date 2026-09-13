@@ -6,11 +6,20 @@ Built for the TTU HackWesTex 2026 challenge. Runs locally on macOS 13 or newer.
 
 ## Download and install
 
-**A ready-to-open app download has not been published yet.** The GitHub **Code → Download ZIP** button downloads the source code, not an installed app.
+**[Download DiskMetrics for Apple Silicon](https://github.com/Charan606/disk-metrics/releases/download/v0.1.0/Disk-Metrics-macOS.zip)** · [Release notes](https://github.com/Charan606/disk-metrics/releases/tag/v0.1.0)
 
-When an app build is published, it will appear on the [Releases page](https://github.com/Charan606/disk-metrics/releases). Until then, use the steps below on your Mac.
+1. Download the ZIP using the link above.
+2. Double-click the ZIP to extract the app.
+3. Drag the extracted app into **Applications**, then open it.
+4. Click the **disk icon in the top menu bar**, then **Open dashboard**.
 
-### Run it now
+Requires macOS 13 or newer. This preview is not notarized by Apple, so macOS may show a security warning. The published ZIP currently uses the filename `Disk-Metrics-macOS.zip`; the project is named **DiskMetrics**.
+
+The **Code → Download ZIP** button downloads source code. Use the download link above for the app.
+
+### Build from source (optional)
+
+Use these steps if you want to develop the app or build the latest source yourself.
 
 1. [Download the source ZIP](https://github.com/Charan606/disk-metrics/archive/refs/heads/main.zip) and double-click it to extract it.
 2. Open **Terminal** using Spotlight (press Command + Space and type Terminal).
