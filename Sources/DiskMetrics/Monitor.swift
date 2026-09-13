@@ -251,7 +251,7 @@ final class Monitor: ObservableObject {
         }
         if notificationsEnabled {
             let content = UNMutableNotificationContent()
-            content.title = demo ? "Disk Metrics DEMO alert" : "Disk Metrics alert"
+            content.title = demo ? "DiskMetrics DEMO alert" : "DiskMetrics alert"
             content.body = volume + ": " + message
             content.sound = .default
             UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil), withCompletionHandler: nil)

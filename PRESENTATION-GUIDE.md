@@ -1,8 +1,8 @@
-# Disk Metrics: understand it, demonstrate it, explain it
+# DiskMetrics: understand it, demonstrate it, explain it
 
 ## Start with this sentence
 
-**Disk Metrics is a Mac app that helps people notice storage problems before those problems interrupt their work.**
+**DiskMetrics is a Mac app that helps people notice storage problems before those problems interrupt their work.**
 
 It answers four questions: Is the drive reporting a problem? How much space remains? Which applications are using storage? What should I investigate?
 
@@ -12,7 +12,7 @@ It does not run an AI model. It monitors the storage used by local AI and other 
 
 Imagine a small clinic that keeps sensitive documents on its own Mac rather than uploading them to an online AI service. Its local AI workflow needs models, documents, indexes, and temporary files. Those files can grow. If storage fills up, downloads and writes can fail. If the drive reports hardware warnings, important data may be at risk. If a shared folder is unavailable, the workflow can lose access to its files.
 
-Disk Metrics brings available Mac storage readings into one view and alerts the person running the system. It does not read patients' documents or certify healthcare compliance. The clinic is a use-case example, not a customer or a validated deployment.
+DiskMetrics brings available Mac storage readings into one view and alerts the person running the system. It does not read patients' documents or certify healthcare compliance. The clinic is a use-case example, not a customer or a validated deployment.
 
 ## The vocabulary, without assuming IT knowledge
 
@@ -37,7 +37,7 @@ Disk Metrics brings available Mac storage readings into one view and alerts the 
 | JSON | A structured text format used by software | Our exported report |
 | Repository | The shared project history and source files | Your public GitHub project |
 | Build | Convert source code into an executable app | `make app` |
-| Release | A published version people can download | A ZIP containing Disk Metrics.app |
+| Release | A published version people can download | A ZIP containing DiskMetrics.app |
 
 ## What every part of the app means
 
@@ -125,7 +125,7 @@ The main refresh normally happens around every two seconds plus collection time.
 
 ## A three-minute presentation
 
-**0:00–0:25 — Problem.** “Local AI needs storage for models and datasets. Teams need to know when space is running out, storage is busy, or a drive reports a warning. We built Disk Metrics, a native Mac menu-bar monitor.”
+**0:00–0:25 — Problem.** “Local AI needs storage for models and datasets. Teams need to know when space is running out, storage is busy, or a drive reports a warning. We built DiskMetrics, a native Mac menu-bar monitor.”
 
 **0:25–0:55 — Real readings.** Open the dashboard in normal mode. Point to the health summary, free space and timestamp. Say: “These come from this Mac. A missing measurement stays unavailable; we do not invent it.”
 

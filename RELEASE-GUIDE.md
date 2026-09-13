@@ -1,4 +1,4 @@
-# Publish Disk Metrics so people can download it
+# Publish DiskMetrics so people can download it
 
 ## Current state
 
@@ -25,13 +25,13 @@ make test
 make package
 ```
 
-Find `dist/Disk-Metrics-macOS.zip` in Finder. This is the **app download**. It contains the compiled Disk Metrics.app. The `TCL Challenge.zip` supplied during development contains source code instead; it is not the end-user app download.
+Find `dist/DiskMetrics-macOS.zip` in Finder. This is the **app download**. It contains the compiled DiskMetrics.app. The `TCL Challenge.zip` supplied during development contains source code instead; it is not the end-user app download.
 
 If building while running a copy from `dist`, quit that copy first. The normal `make update` workflow installs a separate copy under your personal Applications folder.
 
 ## 4. Create a GitHub Release
 
-On the repository page, open **Releases**, choose **Draft a new release**, create a version tag such as `v0.1.0`, and give it a clear title such as `Disk Metrics 0.1 — HackWesTex preview`. Copy the release description from RELEASE-NOTES.md and adjust tested details. Attach `dist/Disk-Metrics-macOS.zip` in the release's asset area. Publish the release only after verifying the asset.
+On the repository page, open **Releases**, choose **Draft a new release**, create a version tag such as `v0.1.0`, and give it a clear title such as `DiskMetrics 0.1 — HackWesTex preview`. Copy the release description from RELEASE-NOTES.md and adjust tested details. Attach `dist/DiskMetrics-macOS.zip` in the release's asset area. Publish the release only after verifying the asset.
 
 GitHub documents attaching compiled programs to releases here: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
 
@@ -39,7 +39,7 @@ Now share your repository's Releases page. A separate website or App Store listi
 
 ## 5. What users do
 
-Users download **Disk-Metrics-macOS.zip** from the release, extract it, move **Disk Metrics.app** into Applications, and open it. They click its menu-bar icon and **Open dashboard**. They do not run `make` or install Swift to use the binary.
+Users download **DiskMetrics-macOS.zip** from the release, extract it, move **DiskMetrics.app** into Applications, and open it. They click its menu-bar icon and **Open dashboard**. They do not run `make` or install Swift to use the binary.
 
 The current release is an Apple Silicon build when built on your Apple Silicon Mac. It targets macOS 13+; verify on the macOS versions you intend to claim. Do not claim Intel support for an arm64-only archive.
 

@@ -89,7 +89,7 @@ struct StorageDetails: View {
                         Text(monitor.probeStatus.components(separatedBy: "\n").prefix(4).joined(separator: "\n")).font(.callout).textSelection(.enabled)
                         Text("This is a one-time test. Recently read data may come from memory, so it can look faster than the disk itself.").font(.caption).foregroundStyle(.secondary)
                         Button("View full test result") {
-                            selectedReport = DiagnosticSection(title: "Folder speed test", source: "Disk Metrics application I/O test", text: monitor.probeStatus)
+                            selectedReport = DiagnosticSection(title: "Folder speed test", source: "DiskMetrics application I/O test", text: monitor.probeStatus)
                         }.disabled(monitor.probeBusy)
                     }.padding(12).frame(maxWidth: .infinity, alignment: .leading)
                 }

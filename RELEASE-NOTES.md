@@ -1,8 +1,8 @@
-# Disk Metrics 0.1 — HackWesTex preview
+# DiskMetrics 0.1 — HackWesTex preview
 
 A native Mac menu-bar app for storage capacity, device activity, reported disk health, and administrator alerts.
 
-Download **Disk-Metrics-macOS.zip** below, extract it, move Disk Metrics.app to Applications, open it, and click **Open dashboard** in its menu-bar panel. Source archives are for developers.
+Download **DiskMetrics-macOS.zip** below, extract it, move DiskMetrics.app to Applications, open it, and click **Open dashboard** in its menu-bar panel. Source archives are for developers.
 
 ## Requirements
 

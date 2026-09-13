@@ -9,7 +9,7 @@ Keep one source folder on the Mac. The installed app and its saved alert history
 3. Run `make test`. The expected result is 27/27 checks passed.
 4. Run `make update`.
 
-The updater compiles first. If compilation fails, your running app is left alone. If it succeeds, it asks the old app to quit, packages the new app, copies it to your personal `~/Applications/Disk Metrics.app`, verifies its signature, and opens it. It never force-kills the app. Your live alert history stays in Application Support. Finish any filesystem test/check before updating.
+The updater compiles first. If compilation fails, your running app is left alone. If it succeeds, it asks the old app to quit, packages the new app, copies it to your personal `~/Applications/DiskMetrics.app`, verifies its signature, and opens it. It never force-kills the app. Your live alert history stays in Application Support. Finish any filesystem test/check before updating.
 
 Click the menu-bar icon and **Open dashboard** to see the full overview. You do not need to delete an app or clear saved data. Use this installed copy going forward; older copies in Downloads are no longer needed for launching.
 
@@ -42,7 +42,7 @@ Health is a separate periodic scan, not a second-by-second sensor stream. The ov
 For an intentionally simulated judging scenario only, quit the normal instance first and launch:
 
 ```sh
-open "$HOME/Applications/Disk Metrics.app" --args --demo
+open "$HOME/Applications/DiskMetrics.app" --args --demo
 ```
 
 The dashboard displays an explicit simulated banner. Quit and reopen normally to return to live data. There is no demo toggle in the user dashboard.

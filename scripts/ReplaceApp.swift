@@ -6,9 +6,9 @@ let args = CommandLine.arguments
 guard args.count == 3 else { print("Usage: ReplaceApp.swift source.app destination.app"); exit(1) }
 let source = URL(fileURLWithPath: args[1]).standardizedFileURL
 let destination = URL(fileURLWithPath: args[2]).standardizedFileURL
-guard source.lastPathComponent == "Disk Metrics.app", destination.lastPathComponent == "Disk Metrics.app",
+guard source.lastPathComponent == "DiskMetrics.app", destination.lastPathComponent == "DiskMetrics.app",
       source != destination, manager.fileExists(atPath: source.appendingPathComponent("Contents/MacOS/DiskMetrics").path) else {
-    print("Expected a built Disk Metrics app and a distinct app destination."); exit(1)
+    print("Expected a built DiskMetrics app and a distinct app destination."); exit(1)
 }
 let parent = destination.deletingLastPathComponent()
 let staged = parent.appendingPathComponent(".disk-metrics-staged-\(UUID().uuidString).app")
